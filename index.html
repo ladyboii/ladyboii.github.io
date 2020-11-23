@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>aaa</title>
+</head>
+<meta charset="utf-8">
+<script type="text/javascript">
+    window.onload = () => {
+    fetch("https://api.github.com/users/ladyboii/repos)
+        .then(resp => resp.json())
+        .then(answ => {
+            for (repo of answ) {
+                let li = document.createElement("li"),
+                a = document.createElement("a");
+
+            a.href = repo.clone_url;
+            a.innerText = repo.full_name.replace("ladyboii/", "");
+            a.target = "blank";
+
+            li.appendChild(a);
+            document
+                .querySelector("#repos_list")
+                .appendChild(li);
+        }
+    })
+}
+</script>
+<style>
+    li {
+        width: 200px;
+        height: 50px;
+        border: 2px solid black;
+        list-style-type: none;
+        margin-top: 5px;
+        justify-content: center;
+        display: flex;
+
+    }
+
+</style>
+<body>
+<div id="st">
+    <ul id="repos_list"></ul>
+</div>
+
+</body>
+</html>
